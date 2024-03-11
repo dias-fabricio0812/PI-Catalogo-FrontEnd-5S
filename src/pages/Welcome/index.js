@@ -16,7 +16,7 @@ export default function Welcome() {
       <View style={styles.subcontainer}>
         <Image
           style={styles.image}
-          source={require('../../logo.png')}
+          source={require('../../images/logo.png')}
           resizeMode='contain'
         />
 

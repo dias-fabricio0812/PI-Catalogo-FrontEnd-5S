@@ -27,7 +27,7 @@ export default function Login() {
 
                     <Image
                         style={styles.image}
-                        source={require('../../logo.png')}
+                        source={require('../../images/logo.png')}
                         resizeMode='contain'
                     />
                 </View>
