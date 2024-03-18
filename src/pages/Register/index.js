@@ -4,12 +4,14 @@ import { Alert } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather'
 import { useNavigation } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../services/firebaseConfig';
 
 
 export default function Login() {
     const navigation = useNavigation()
 
+    const [user, setUser] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
 
@@ -19,8 +21,8 @@ export default function Login() {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log(user)
                 setUser(user)
+                console.log(user)
                 Alert.alert('Criação de conta', 'Conta criada com sucesso!', [
                     {text: 'Continuar', onPress: () => console.log('Continue Pressed')},
                 ]);
@@ -31,7 +33,6 @@ export default function Login() {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorMessage)
-                Alert(errorMessage)
                 Alert.alert('Criação de conta', errorMessage, [
                     {text: 'Ok', onPress: () => console.log('Ok Pressed')},
                 ]);
@@ -104,7 +105,7 @@ export default function Login() {
                     </View>
                 </View>
 
-                <TouchableOpacity style={styles.loginButton} onPress={() => handleLogin} >
+                <TouchableOpacity style={styles.loginButton} onPress={handleLogin} >
                     <Text style={styles.buttonText}>Cadastrar</Text>
                 </TouchableOpacity>
 

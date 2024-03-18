@@ -5,10 +5,12 @@ import { useNavigation } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Alert } from 'react-native';
+import { auth } from '../../services/firebaseConfig';
 
 export default function Login() {
     const navigation = useNavigation()
 
+    const [user, setUser] = useState()    
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
 
@@ -90,7 +92,7 @@ export default function Login() {
                     </View>
                 </View>
 
-                <TouchableOpacity style={styles.loginButton} onPress={() => handleLogin} >
+                <TouchableOpacity style={styles.loginButton} onPress={handleLogin} >
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
 
