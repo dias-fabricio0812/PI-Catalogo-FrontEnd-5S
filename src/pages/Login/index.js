@@ -4,8 +4,8 @@ import Feather from 'react-native-vector-icons/Feather'
 import { useNavigation } from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Alert } from 'react-native';
 import { auth } from '../../services/firebaseConfig';
+import NetInfo from "@react-native-community/netinfo";
 
 export default function Login() {
     const navigation = useNavigation()
@@ -13,10 +13,26 @@ export default function Login() {
     const [user, setUser] = useState()    
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
+    const [isConnected, setIsConnected] = useState(false);
+
+    useEffect(() => {
+        const unsubscribe = NetInfo.addEventListener(state => {
+          if (state.isConnected) {
+            Alert.alert("Conexão com a internet", "Você está conectado à internet.");
+            setIsConnected(true);
+          } 
+          else {
+            Alert.alert("Conexão com a internet", "Você não está conectado à internet. Por favor, verifique sua conexão.");
+            setIsConnected(false);
+          }
+        });
+    
+        return () => unsubscribe();
+      }, []);
 
     const handleLogin = () => {
-
-        signInWithEmailAndPassword(auth, email, password)
+        if(isConnected == true){
+            signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
@@ -28,11 +44,15 @@ export default function Login() {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorMessage)
-                //Alert("Email ou senha invalido(s)")
                 Alert.alert('Login', 'Email ou senha invalido(s)', [
                     {text: 'Ok', onPress: () => console.log('Continue Pressed')},
                 ]);
             });
+        }
+        else{
+            Alert.alert("Conexão com a internet", "Você não está conectado à internet. Por favor, verifique sua conexão.");
+        }
+        
     }
 
     return (
@@ -96,10 +116,15 @@ export default function Login() {
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
 
+                <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('Home')} >
+                    <Text style={styles.buttonText}>Acessar sem Login</Text>
+                </TouchableOpacity>
+
                 <TouchableOpacity style={styles.registerButton} onPress={() => navigation.navigate('Register')} >
                     <Text style={[styles.registerText]}>Ainda não tem uma conta?</Text>
                     <Text style={[styles.registerText]}>Crie uma agora!</Text>
                 </TouchableOpacity>
+                
             </View>
         </LinearGradient>
     )

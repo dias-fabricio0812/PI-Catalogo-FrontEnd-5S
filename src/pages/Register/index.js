@@ -8,7 +8,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../services/firebaseConfig';
 
 
-export default function Login() {
+export default function Registro() {
     const navigation = useNavigation()
 
     const [user, setUser] = useState()
