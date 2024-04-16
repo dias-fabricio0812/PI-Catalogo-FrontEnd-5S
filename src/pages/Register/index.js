@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput } from 'react-native'
 import { Alert } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather'
@@ -9,8 +9,8 @@ import { auth } from '../../services/firebaseConfig';
 
 
 export default function Registro() {
-    const navigation = useNavigation()
 
+    const navigation = useNavigation()
     const [user, setUser] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
@@ -98,6 +98,7 @@ export default function Registro() {
                             style={styles.passwordPlaceholder}
                             placeholder='Digite sua senha'
                             placeholderTextColor='#BDC3C7'
+                            secureTextEntry={true}
                             onChangeText={(val) => {
                                 setPassword(val)
                             }}

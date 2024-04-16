@@ -9,12 +9,13 @@ import NetInfo from "@react-native-community/netinfo";
 
 export default function Login() {
     const navigation = useNavigation()
-
     const [user, setUser] = useState()    
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
-    const [isConnected, setIsConnected] = useState(false);
+    const [isConnected, setIsConnected] = useState(true);
 
+    // Sensor de internet utilizado abaixo, está comentado pois não funciona no emulador...
+    /*
     useEffect(() => {
         const unsubscribe = NetInfo.addEventListener(state => {
           if (state.isConnected) {
@@ -29,6 +30,7 @@ export default function Login() {
     
         return () => unsubscribe();
       }, []);
+      */
 
     const handleLogin = () => {
         if(isConnected == true){
@@ -105,6 +107,7 @@ export default function Login() {
                             style={styles.passwordPlaceholder}
                             placeholder='Digite sua senha'
                             placeholderTextColor='#BDC3C7'
+                            secureTextEntry={true}
                             onChangeText={(val) => {
                                 setPassword(val)
                             }}
@@ -112,12 +115,8 @@ export default function Login() {
                     </View>
                 </View>
 
-                <TouchableOpacity style={styles.loginButton} onPress={handleLogin} >
+                <TouchableOpacity style={styles.loginButton} onPress={/*() => navigation.navigate('Home')*/handleLogin} >
                     <Text style={styles.buttonText}>Login</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('Home')} >
-                    <Text style={styles.buttonText}>Acessar sem Login</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.registerButton} onPress={() => navigation.navigate('Register')} >
