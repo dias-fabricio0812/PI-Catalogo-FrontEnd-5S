@@ -17,6 +17,11 @@ export default function Home() {
             <View style={styles.subcontainer}>
                 <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollContainer}>
                     <View style={styles.iconArea}>
+                        <Image
+                            style={styles.image}
+                            source={require('../../images/logo.png')}
+                            resizeMode='contain'
+                        />
                         <Feather
                             name='user'
                             size={50}
@@ -44,14 +49,29 @@ export default function Home() {
                                 color='#fff'
                             />
                         </TouchableOpacity>
+                        <TouchableOpacity style={styles.menuButton}>
+                            <Text style={styles.menuText}>Favoritos</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.menuButton}>
+                            <Text style={styles.menuText}>Histórico</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.menuButton}>
+                            <Text style={styles.menuText}>FAQ</Text>
+                        </TouchableOpacity>
                     </View>
 
                     <Text style={styles.title}>
-                        Sua biblioteca
+                        Biblioteca
                     </Text>
 
                     <View style={styles.book}>
-                        <View style={[styles.bookCover, {backgroundColor:'red'}]}></View>
+                        <View style={styles.bookCover}>
+                            <Image
+                                style={styles.bookCoverImage}
+                                source={require('../../images/coraline.jpg')}
+                                resizeMode='cover'
+                            />
+                        </View>
                         <View style={styles.bookContent}>
                             <View style={styles.contentBlock}>
                                 <Text style={styles.bookTitle}>Coraline</Text>
@@ -65,7 +85,13 @@ export default function Home() {
                     </View>
 
                     <View style={styles.book}>
-                        <View style={[styles.bookCover, {backgroundColor:'yellow'}]}></View>
+                        <View style={styles.bookCover}>
+                            <Image
+                                style={styles.bookCoverImage}
+                                source={require('../../images/thenightocean.jpg')}
+                                resizeMode='cover'
+                        />
+                        </View>
                         <View style={styles.bookContent}>
                             <View style={styles.contentBlock}>
                                 <Text style={styles.bookTitle}>The Night Ocean</Text>
@@ -79,15 +105,61 @@ export default function Home() {
                     </View>
 
                     <View style={styles.book}>
-                        <View style={[styles.bookCover, {backgroundColor:'green'}]}></View>
+                        <View style={styles.bookCover}>
+                            <Image
+                                style={styles.bookCoverImage}
+                                source={require('../../images/filhaperdida.jpg')}
+                                resizeMode='cover'
+                        />
+                        </View>
                         <View style={styles.bookContent}>
                             <View style={styles.contentBlock}>
-                                <Text style={styles.bookTitle}>Os dois morrem no final</Text>
-                                <Text style={styles.bookSubtitle}>Adam Silvera</Text>
+                                <Text style={styles.bookTitle}>A Filha Perdida</Text>
+                                <Text style={styles.bookSubtitle}>Elena Ferrante</Text>
                             </View>
                             <View style={styles.contentBlock}>
-                                <Text style={styles.bookTitle}>Literatura Adulta</Text>
-                                <Text style={styles.bookSubtitle}>2017</Text>
+                                <Text style={styles.bookTitle}>Romance</Text>
+                                <Text style={styles.bookSubtitle}>2006</Text>
+                            </View>
+                        </View>
+                    </View>
+
+                    <View style={styles.book}>
+                        <View style={styles.bookCover}>
+                            <Image
+                                style={styles.bookCoverImage}
+                                source={require('../../images/solitaria.jpg')}
+                                resizeMode='cover'
+                        />
+                        </View>
+                        <View style={styles.bookContent}>
+                            <View style={styles.contentBlock}>
+                                <Text style={styles.bookTitle}>Solitária</Text>
+                                <Text style={styles.bookSubtitle}>Eliana Alves Cruz</Text>
+                            </View>
+                            <View style={styles.contentBlock}>
+                                <Text style={styles.bookTitle}>Ficção literária</Text>
+                                <Text style={styles.bookSubtitle}>2022</Text>
+                            </View>
+                        </View>
+                    </View>
+
+                    <View style={styles.book}>
+                        <View style={styles.bookCover}>
+                            <Image
+                                style={styles.bookCoverImage}
+                                source={require('../../images/cachorra.jpg')}
+                                resizeMode='cover'
+                        />
+                        </View>
+                        <View style={styles.bookContent}>
+                            <View style={styles.contentBlock}>
+                                <Text style={styles.bookTitle}>A Cachorra</Text>
+                                <Text style={styles.bookSubtitle}>Pilar Quintana</Text>
+                            </View>
+                            <View style={styles.contentBlock}>
+                                <Text style={styles.bookTitle}>Ficção literária</Text>
+                                <Text style={styles.bookSubtitle}>2020</Text>
                             </View>
                         </View>
                     </View>
@@ -172,6 +244,15 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         marginBottom:'7%'
     },
+    bookCover:{
+        width:'30%',
+        height:'100%',
+        backgroundColor:'gray'
+    },
+    bookCoverImage:{
+            width:'100%',
+            height:'100%',
+        },
     bookContent:{
         backgroundColor:'#2C3E50',
         width:'100%',
