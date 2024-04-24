@@ -49,15 +49,6 @@ export default function Home() {
                                 color='#fff'
                             />
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.menuButton}>
-                            <Text style={styles.menuText}>Favoritos</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.menuButton}>
-                            <Text style={styles.menuText}>Histórico</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.menuButton}>
-                            <Text style={styles.menuText}>FAQ</Text>
-                        </TouchableOpacity>
                     </View>
 
                     <Text style={styles.title}>
