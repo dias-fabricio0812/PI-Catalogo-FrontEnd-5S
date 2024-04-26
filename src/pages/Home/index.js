@@ -42,7 +42,7 @@ export default function Home() {
                     </View>
 
                     <View style={styles.menu}>
-                        <TouchableOpacity style={[styles.menuButton, styles.searchButton]}>
+                        <TouchableOpacity style={[styles.menuButton, styles.searchButton]} onPress={() => navigation.navigate('AddBook')}>
                             <Feather
                                 name='plus'
                                 size={30}

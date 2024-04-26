@@ -7,6 +7,7 @@ import Welcome from './src/pages/Welcome'
 import Login from './src/pages/Login'
 import Register from './src/pages/Register'
 import Home from './src/pages/Home'
+import AddBook from './src/pages/AddBook'
 
 const Stack = createNativeStackNavigator()
 
@@ -42,6 +43,14 @@ export default function App() {
         <Stack.Screen
           name='Home'
           component={Home}
+          options={{
+            headerShown: false
+          }}
+        />
+
+        <Stack.Screen
+          name='AddBook'
+          component={AddBook}
           options={{
             headerShown: false
           }}
