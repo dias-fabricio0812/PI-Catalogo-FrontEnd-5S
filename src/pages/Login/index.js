@@ -133,9 +133,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
+        justifyContent: 'center'
     },
     subcontainer: {
-        flex: 1,
         width: '85%',
         alignItems: 'center'
     },
